@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="../style1.css">
+  <title>Nutrify.me</title>
+</head>
+<body>
+    <%- include('./partials/ac.ejs') %>
+      <br> <br> <br>
+                <a class="btn btn-outline-warn my-2 my-sm-0" style="float: right; margin: 5px;"  href="http://localhost:7390/auth/meals?sortBy=desc">Descending</a>
+                <a class="btn btn-outline-warn my-2 my-sm-0" style="float: right; margin: 5px;" href="http://localhost:7390/auth/meals?sortBy=asc ">Ascending</a>
+                <form action="/auth/meals" method="GET">
+                     <div style="float: left;">
+                        <label for="Calories" style="color: white; font-weight: bold;" >Calories</label>
+                           <select name="Calories"id="Calories">
+                                <option >Choose-Option</option>
+                                <option value="100">100</option>
+                                <option value="200">200</option>
+                                <option value="300">300</option>
+                                <option value="400">400</option>
+                                <option value="500">500</option>
+                           </select>
+                     </div>
+                    <button type="submit" class="btn btn-outline-success my-2 my-sm-0" style="margin-left: 5px; border-radius: 5px; height: 30px; padding-top: 2px;">Sumit</button>
+                </form>
+                
+                <form class="form-inline" action="/auth/search" method="GET">
+                    <input class="form-control mr-sm-2" type="search" name="value" placeholder="Search" aria-label="Search" style="margin-left: 200px;">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                  </form>
+      <br> <br>
+    <div class="container-fluid" style="width: 100%;">
+        <div class="row">
+            <!-- column -->
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">MEAL LIST</h4>
+                        <h6 class="card-subtitle" style="color: black;">Meal list<code> Nutrify.me</code></h6>
+                        <button type="button" class="btn btn-danger"></button>
+                        <div class="table-responsive">
+                            <table class="table user-table">
+                                <thead>
+                                    <tr>
+                                        <th class="border-top-0">ID</th>
+                                        <th class="border-top-0">UserName</th>
+                                        <th class="border-top-0">Mobile Number</th>
+                                        <th class="border-top-0">Date</th>
+                                        <th class="border-top-0">MealType</th>
+                                        <th class="border-top-0">MealName</th>
+                                        <th class="border-top-0">Description</th>
+                                        <th class="border-top-0">Calories</th>
+                                        <th class="border-top-0">EDIT</th>
+                                        <th class="border-top-0">Delete</th>
+                                     </tr>
+                                </thead>
+                                <tbody>
+                                    <% userMealList.forEach((data,index) => { %>
+                                    <tr>
+                                        <td><%-index+1 %></td>
+                                        <td><%-data.userName   %></td>
+                                        <td ><%-data.Phonenumber %></td>
+                                        <td><%-data.Date %></td>
+                                        <td><%-data.MealType %></td>
+                                        <td><%-data.MealName %></td>
+                                        <td><%-data.Description %>
+                                        <td><%-data.Calories %></td>
+                                        <td>
+                                                <button class="btn btn-primary"><a href="/auth/editmeal/<%- data._id %>" style="color: white;">Edit</a></button>
+                                        
+                                        </td>
+                                        <td>
+                                            <form action="delete/<%- data._id %>" method="post">
+                                            <button type="submit"  class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <% }) %>
+                                </tbody>
+                            </table>
+                            <% if (pages > 0) { %>
+                                <nav aria-label="Page navigation example"></nav>
+                                <ul class="pagination text-center">
+                                    <% if (current == 1) { %>
+                                        <li class="disabled page-link"><a><</a></li>
+                                    <% } else { %>
+                                        <li class="page-item  page-link00000000000 "><a href="/auth/meals?page=1">First</a></li>
+                                    <% } %>
+                                    <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+                                    <% if (i !== 1) { %>
+                                        <li class=" page-link disabled"><a>...</a></li>
+                                    <% } %>
+                                    <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+                                        <% if (i == current) { %>
+                                            <li class="active  page-link"><a><%= i %></a></li>
+                                        <% } else { %>
+                                            <li class=" page-link"><a href="/auth/meals?page=<%= i %>"><%= i %></a></li>
+                                        <% } %>
+                                        <% if (i == Number(current) + 4 && i < pages) { %>
+                                            <li class="disabled  page-link"><a>...</a></li>
+                                        <% } %>
+                                    <% } %>
+                                    <% if (current == pages) { %>
+                                        <li class="disabled  page-link"><a>Last</a></li>
+                                    <% } else { %>
+                                        <li class=" page-link"><a href="/auth/meals?page=<%= pages %>">>></a></li>
+                                    <% } %>
+                                </ul>
+                                <nav aria-label="Page navigation example"></nav>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+
+   <script src="https://kit.fontawesome.com/3f173db15d.js" crossorigin="anonymous"></script> 
+</body>
+</html>  

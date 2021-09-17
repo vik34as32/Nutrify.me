@@ -1,0 +1,57 @@
+<div>
+<nav>
+    <h6>
+        Nutrify.me
+    </h6>
+    <ul>
+         <li>
+             <a href="/auth" ><i class="fas fa-home"></i></a>
+         </li>
+        <li>
+           <a href="/auth/dashboard">Dashboard</a>
+       </li>
+        <li>
+           <a href="">MEAL<i class="fas fa-angle-down"></i></a>
+           <ul>
+               <li>
+                   <a href="/auth/AddMeal">ADD_MEAL</a>
+               </li>
+           </ul>
+        </li>
+         <li>
+           <a >element <i class="fas fa-angle-down"></i> </a>
+           <ul>
+             <li><a >dashboard <i class="fas fa-angle-right"></i>
+             </a>
+                   <ul>
+                       <li><a href="/auth/meals">MEAL_LIST</a></li>
+                       <li><a href="">1</a></li>
+                       <li><a href="">1</a></li>
+                   </ul>
+             </li>
+             <li><a href="">dashboard <i class="fas fa-angle-right"></i></a>
+               <ul>
+                   <li><a href="">1</a></li>
+                   <li><a href="">1</a></li>
+                   <li><a href="">1</a></li>
+               </ul>
+         </li>
+           </ul>
+         </li> 
+         <li>
+           <i class="fas fa-user"></i> <a href="/auth/profile">Profile</a>
+         </li>
+
+         <li>
+           <i class="fas fa-user-circle"></i><a href="" style="text-transform: uppercase; font-weight: bold;"><%= user.username %></a><i class="fas fa-angle-down"></i>
+           <ul>
+              <li><i class="fas fa-user"></i><a href="/auth/profile">Profile</a></li>
+          
+               <form action="/signin" method="POST">
+                 <li><i class="fas fa-sign-out-alt"></i><button type="submit">Logout</button></li>
+               </form>
+           </ul>
+       </li>
+    </ul>
+  </nav>
+</div>

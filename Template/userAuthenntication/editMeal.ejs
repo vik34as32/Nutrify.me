@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/style1.css">
+  <title>Nutrify.me</title>
+</head>      
+<body>
+    <%- include('./partials/ac') %> 
+    <br><br><br><br>
+       <div class="container1">
+       <h1>Update A MEAL</h1>
+        <p>please Add the Meal</p>
+        <form action="/auth/updatemeal/<%=userUpdateMeal._id %>" method="POST">
+          <div class="form-group row" style="display: none;">
+            <label for="userId" class="col-sm-2 col-form-label">UserID</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="userId" id="userId" value="<%= userUpdateMeal.userId %>" placeholder="UserID" readonly>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="userName" class="col-sm-2 col-form-label">userName</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="userName" id="userName"  value="<%= userUpdateMeal.userName %>" placeholder="userName" readonly>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="phonenumber" class="col-sm-2 col-form-label">phonenumber</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="phonenumber" value="<%= userUpdateMeal.Phonenumber %>" id="phonenumber" placeholder="phonenumber">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="MealType" class="col-sm-2 col-form-label">MealType</label>
+            <div class="col-sm-10">
+               <select name="MealType" aria-valuenow="<%= userUpdateMeal.MealType %>"  class="form-control"   id="MealType">
+                 <option value="">Choose-Option</option>
+                  <option value="veg">Veg</option>
+                  <option value="veg">Non-Veg</option>
+               </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for=" MealName" class="col-sm-2 col-form-label">MealName</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name=" MealName" id=" MealName" value="<%= userUpdateMeal.MealName %>" placeholder=" MealName">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="Description" class="col-sm-2 col-form-label"> Description</label>
+            <div class="col-sm-10">
+            <textarea class="form-control" name="Description"  id="Description" rows="3"></textarea>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="Calories" class="col-sm-2 col-form-label">Calories</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" name="Calories" value="<%= userUpdateMeal.Calories %>" id="Calories" placeholder="Calories">
+            </div>
+          </div>
+           
+          <div class="form-group">
+            <div class="col-sm-10">
+              <button type="submit" class="btn btn-success m-4" >Update</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-10">
+              <button class="btn btn-muted m-1">Cancel</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+   <script src="https://kit.fontawesome.com/3f173db15d.js" crossorigin="anonymous"></script> 
+</body>
+</html>

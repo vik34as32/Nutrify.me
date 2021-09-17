@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrify Admin Panel </title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-image: url("images/admin (1).jpg");
+            background-size: cover;
+            background-position: center;
+            font-family: sans-serif;
+    
+        }
+        .Loginbox{
+            width: 320px;
+            height: 420px;
+            background: #000;
+            color: #fff;
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            box-sizing: border-box;
+            padding: 76px 30px;
+        }
+        .avatar{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            position: absolute;
+            top: -12%;
+            left:30%
+        }
+        h1{
+            margin: 0;
+            padding: 0 0 20px;
+            text-align: center;
+            font-size: 22px;
+        }
+        .Loginbox p{
+            margin: 0;
+            padding: 0;
+            font-weight: bold;
+        }
+        .Loginbox input{
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .Loginbox input[type="email"],input[type="password"]
+        {
+           border: none;
+           border-bottom: 1px solid #fff;
+           background: transparent;
+           outline: none;
+           height: 40px;
+           color: #fff;
+           font-size: 16px;
+        }
+
+        .Loginbox input[type="submit"]
+         {
+             border: none;
+             outline: none;
+             height: 40px;
+             background: #25fba2;
+             color: #fff;
+             font-size: 18px;
+             border-radius: 20px;
+         }
+
+         .Loginbox input[type="submit"]:hover{
+             cursor: pointer;
+             background: #fb2525;
+             color: #fff;
+         }
+    </style>
+</head>
+<body>
+      <div class="Loginbox">
+         <img src="images/adminuser1.png" class="avatar">
+           <h1>ADMIN PANEL</h1>
+           <form action="admin/" method="post">
+               <p>Admin Email:</p>
+                <input type="email" name="adminemail" placeholder="Admin  ">
+                <p>Admin Password:</p>
+                <input type="password" name="adminPassword" placeholder="Admin password">
+                <input type="submit" value="LOGIN">
+           </form>
+           <p style ="color:red"><%= message %></p>
+      </div>
+</body>
+</html>
